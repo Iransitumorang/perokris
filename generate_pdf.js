@@ -14,10 +14,10 @@ const path = require('path');
         console.log('Membuka file:', filePath);
         await page.goto(filePath, { waitUntil: 'networkidle0', timeout: 90000 });
 
-        // Jeda tambahan agar semua rendering selesai
+        // Jeda agar rendering asset dan font sempurna
         await new Promise(r => setTimeout(r, 2000));
 
-        await page.setViewport({ width: 1440, height: 2500 });
+        await page.setViewport({ width: 1440, height: 3500 });
 
         await page.addStyleTag({
             content: `
@@ -28,8 +28,8 @@ const path = require('path');
                     top: 0 !important; transform: none !important; left: 0 !important;
                     width: 100% !important;
                     background: #020617 !important; 
-                    padding: 60px !important;
-                    margin-bottom: 40px !important;
+                    padding: 80px 40px !important;
+                    margin-bottom: 20px !important;
                     display: flex !important;
                     justify-content: center !important;
                     align-items: center !important;
@@ -40,8 +40,8 @@ const path = require('path');
                     margin-right: 30px !important; 
                     display: block !important; 
                     background: white !important;
-                    padding: 5px !important;
-                    border-radius: 10px !important;
+                    padding: 4px !important;
+                    border-radius: 12px !important;
                     -webkit-print-color-adjust: exact !important;
                 }
                 .header-title { 
@@ -53,20 +53,46 @@ const path = require('path');
                     font-weight: 800 !important;
                 }
 
-                .philosophy-card h3::after, .info-content h2::after {
+                /* Underlines visibility in PDF */
+                .philosophy-card h3::after, .info-tag::after {
                     -webkit-print-color-adjust: exact !important;
                     background: #fbbf24 !important;
                     display: block !important;
+                    height: 3px !important;
                 }
 
-                body { background: #020617 !important; -webkit-print-color-adjust: exact !important; }
+                body { background: #020617 !important; -webkit-print-color-adjust: exact !important; color: white !important; }
                 .hero { display: none !important; }
-                .container { padding-top: 20px !important; }
-                .info-section { margin-top: 50px !important; padding: 60px 40px !important; border-radius: 40px !important; background: #0f172a !important; }
-                .philosophy-card { break-inside: avoid; background: #0f172a !important; border: 1px solid #334155 !important; margin-bottom: 30px !important; }
-                .phil-list li { background: #334155 !important; color: #fbbf24 !important; border: 1px solid #fbbf24 !important; }
-                footer { padding: 60px !important; background: #020617 !important; }
-                .footer-line { background: #fbbf24 !important; }
+                
+                .philosophy-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
+                .philosophy-card.gold-card, .philosophy-card.large-card { grid-column: 1 / -1 !important; }
+                .philosophy-card { 
+                    page-break-inside: avoid !important; 
+                    background: #0f172a !important; 
+                    border: 1px solid #1e293b !important; 
+                    margin-bottom: 25px !important; 
+                }
+
+                /* Paksa List sebaris di PDF */
+                .phil-list {
+                    display: flex !important;
+                    flex-direction: row !important;
+                    flex-wrap: nowrap !important;
+                    justify-content: space-between !important;
+                }
+                .phil-list li {
+                    background: #1e293b !important;
+                    color: #fbbf24 !important;
+                    border: 1px solid #fbbf24 !important;
+                    flex: 1 !important;
+                    font-size: 10px !important;
+                    padding: 5px 2px !important;
+                    text-align: center !important;
+                }
+
+                .info-section { background: #0f172a !important; padding: 60px 40px !important; border-radius: 40px !important; break-inside: avoid; }
+                footer { padding: 80px 40px !important; background: #020617 !important; }
+                .footer-line { background: #fbbf24 !important; height: 1px !important; }
             `
         });
 

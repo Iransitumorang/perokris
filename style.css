@@ -219,6 +219,14 @@ header {
     border-radius: 30px;
     margin-bottom: 2rem;
     object-fit: contain;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.card-logo-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
 }
 
 .philosophy-card h3 {
@@ -245,6 +253,7 @@ header {
     border-radius: 2px;
 }
 
+/* Garis kiri untuk kartu besar (Bingkai Kelopak & Tipografi) */
 .large-card h3::after {
     left: 0;
     transform: none;
@@ -270,27 +279,26 @@ header {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-bottom: 1rem;
-    display: block;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.info-tag::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gold-gradient);
+    border-radius: 2px;
 }
 
 .info-content h2 {
     font-size: 3.5rem !important;
     margin-bottom: 2.5rem !important;
-    position: relative;
-    display: inline-block;
-    padding-bottom: 15px;
-}
-
-.info-content h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100px;
-    height: 4px;
-    background: var(--gold-gradient);
-    border-radius: 2px;
 }
 
 .info-details-grid {
@@ -336,20 +344,32 @@ header {
 .phil-list {
     list-style: none;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.8rem;
+    flex-wrap: nowrap;
+    /* WAJIB sebaris */
+    justify-content: space-between;
+    gap: 0.5rem;
     margin-top: 1.5rem;
+    width: 100%;
 }
 
 .phil-list li {
-    background: rgba(251, 191, 36, 0.1);
+    background: rgba(251, 191, 36, 0.05);
     color: var(--gold-bright);
-    padding: 0.4rem 1rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
+    padding: 0.5rem 0.2rem;
+    border-radius: 10px;
+    font-size: 0.72rem;
     font-weight: 600;
-    border: 1px solid rgba(251, 191, 36, 0.2);
+    border: 1px solid rgba(251, 191, 36, 0.1);
+    white-space: nowrap;
+    flex: 1;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.phil-list li:hover {
+    background: rgba(251, 191, 36, 0.15);
+    transform: translateY(-2px);
+    border-color: var(--gold-bright);
 }
 
 .phil-list.horizontal {
@@ -358,9 +378,11 @@ header {
 
 .phil-list-simple {
     list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    display: flex;
+    flex-direction: row;
+    /* Dari grid jadi flex sebaris */
+    flex-wrap: wrap;
+    gap: 1.5rem;
     margin-top: 1.5rem;
     text-align: left;
 }
