@@ -70,26 +70,35 @@ body::after {
 .cosmic-bg::after {
     content: '';
     position: absolute;
+    border-radius: 50%;
+    background: transparent;
+}
+
+.cosmic-bg::before {
     width: 2px;
     height: 2px;
-    background: white;
-    border-radius: 50%;
     box-shadow:
-        10vw 20vh 1px #fff, 25vw 45vh 1px #fff, 40vw 10vh 2px #fff,
-        55vw 85vh 1px #fff, 70vw 30vh 1px #fff, 85vw 60vh 2px #fff,
-        15vw 75vh 1px #fff, 35vw 25vh 2px #fff, 65vw 50vh 1px #fff,
-        95vw 15vh 1px #fff, 45vw 65vh 2px #fff, 75vw 95vh 1px #fff;
-    opacity: 0.3;
-    animation: cosmic-float 60s linear infinite;
+        15vw 15vh 1px #fff, 35vw 25vh 1px #fff, 55vw 10vh 2px #fff,
+        75vw 45vh 1px #fff, 95vw 85vh 1px #fff, 10vw 70vh 2px #fff,
+        25vw 95vh 1px #fff, 45vw 35vh 2px #fff, 65vw 15vh 1px #fff,
+        85vw 55vh 1px #fff, 5vw 40vh 2px #fff, 50vw 90vh 1px #fff,
+        30vw 60vh 1px #fff, 70vw 80vh 2px #fff, 90vw 20vh 1px #fff,
+        18vw 78vh 1px #fff, 48vw 28vh 2px #fff, 78vw 58vh 1px #fff;
+    opacity: 0.4;
+    animation: cosmic-float 40s linear infinite, twinkle 4s infinite ease-in-out;
 }
 
 .cosmic-bg::after {
-    width: 4px;
-    height: 4px;
-    opacity: 0.1;
-    animation-duration: 90s;
-    animation-delay: -30s;
-    filter: blur(1px);
+    width: 3px;
+    height: 3px;
+    box-shadow:
+        20vw 30vh 1px #60a5fa, 40vw 50vh 2px #fbbf24, 60vw 70vh 1px #fff,
+        80vw 10vh 2px #3b82f6, 5vw 25vh 1px #fbbf24, 25vw 45vh 2px #fff,
+        45vw 65vh 1px #60a5fa, 75vw 85vh 2px #fbbf24, 95vw 35vh 1px #fff,
+        55vw 5vh 2px #3b82f6, 15vw 75vh 1px #fbbf24, 85vw 95vh 2px #fff;
+    opacity: 0.3;
+    animation: cosmic-float 60s linear infinite reverse, twinkle 6s infinite ease-in-out;
+    filter: blur(0.5px);
 }
 
 @keyframes cosmic-float {
@@ -102,21 +111,34 @@ body::after {
     }
 }
 
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: scale(1.2);
+    }
+}
+
 @keyframes aurora-flow {
     0% {
         transform: translate(0, 0) scale(1) rotate(0deg);
+        opacity: 0.25;
     }
 
-    33% {
-        transform: translate(100px, 50px) scale(1.1) rotate(10deg);
-    }
-
-    66% {
-        transform: translate(-50px, 120px) scale(0.9) rotate(-15deg);
+    50% {
+        transform: translate(120px, 80px) scale(1.15) rotate(15deg);
+        opacity: 0.4;
     }
 
     100% {
-        transform: translate(20px, -80px) scale(1.05) rotate(5deg);
+        transform: translate(-40px, -60px) scale(1) rotate(-8deg);
+        opacity: 0.25;
     }
 }
 
