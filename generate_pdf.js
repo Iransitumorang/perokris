@@ -4,10 +4,11 @@ const path = require('path');
 (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    const filePath = 'file://' + path.join(__dirname, 'index.html');
-    
-    await page.goto(filePath, { waitUntil: 'networkidle0' });
-    
+    const filePath = 'file:///' + path.join(__dirname, 'index.html').replace(/\\/g, '/');
+
+    console.log('Membuka file:', filePath);
+    await page.goto(filePath, { waitUntil: 'networkidle2' });
+
     // Set viewport to a realistic desktop size
     await page.setViewport({ width: 1440, height: 900 });
 
