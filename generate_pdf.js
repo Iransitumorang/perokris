@@ -21,7 +21,7 @@ const path = require('path');
 
         await page.addStyleTag({
             content: `
-                video, .download-btn { display: none !important; } 
+                video, .download-btn, .cosmic-bg { display: none !important; } 
                 
                 header { 
                     position: relative !important; 

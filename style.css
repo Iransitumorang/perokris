@@ -27,40 +27,96 @@ body {
     position: relative;
 }
 
-/* Background Aurora Blobs */
+/* Background Aurora Animation */
 body::before,
 body::after {
     content: '';
     position: fixed;
-    width: 600px;
-    height: 600px;
+    width: 800px;
+    height: 800px;
     border-radius: 50%;
-    filter: blur(120px);
+    filter: blur(140px);
     z-index: -1;
-    opacity: 0.3;
-    animation: move 20s infinite alternate;
+    opacity: 0.25;
+    animation: aurora-flow 25s infinite alternate ease-in-out;
 }
 
 body::before {
-    background: radial-gradient(circle, var(--primary-blue), transparent);
-    top: -10%;
+    background: radial-gradient(circle, #3b82f6, transparent);
+    top: -20%;
     left: -10%;
 }
 
 body::after {
-    background: radial-gradient(circle, var(--gold-deep), transparent);
-    bottom: -10%;
+    background: radial-gradient(circle, #f59e0b, transparent);
+    bottom: -20%;
     right: -10%;
-    animation-delay: -10s;
+    animation-delay: -12s;
 }
 
-@keyframes move {
+/* Cosmic Background Particles */
+.cosmic-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.cosmic-bg::before,
+.cosmic-bg::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow:
+        10vw 20vh 1px #fff, 25vw 45vh 1px #fff, 40vw 10vh 2px #fff,
+        55vw 85vh 1px #fff, 70vw 30vh 1px #fff, 85vw 60vh 2px #fff,
+        15vw 75vh 1px #fff, 35vw 25vh 2px #fff, 65vw 50vh 1px #fff,
+        95vw 15vh 1px #fff, 45vw 65vh 2px #fff, 75vw 95vh 1px #fff;
+    opacity: 0.3;
+    animation: cosmic-float 60s linear infinite;
+}
+
+.cosmic-bg::after {
+    width: 4px;
+    height: 4px;
+    opacity: 0.1;
+    animation-duration: 90s;
+    animation-delay: -30s;
+    filter: blur(1px);
+}
+
+@keyframes cosmic-float {
     from {
-        transform: translate(0, 0) scale(1);
+        transform: translateY(0);
     }
 
     to {
-        transform: translate(150px, 50px) scale(1.1);
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes aurora-flow {
+    0% {
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+
+    33% {
+        transform: translate(100px, 50px) scale(1.1) rotate(10deg);
+    }
+
+    66% {
+        transform: translate(-50px, 120px) scale(0.9) rotate(-15deg);
+    }
+
+    100% {
+        transform: translate(20px, -80px) scale(1.05) rotate(5deg);
     }
 }
 
@@ -90,6 +146,14 @@ header {
     background: rgba(255, 255, 255, 0.95);
     padding: 4px;
     border-radius: 8px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.header-logo:hover {
+    transform: scale(1.15) rotate(-5deg);
+    background: #fff;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
 }
 
 .header-title {
@@ -173,11 +237,27 @@ header {
     font-size: 3.5rem;
     text-align: center;
     margin-bottom: 4rem;
-    background: var(--blue-gradient);
+    background: var(--gold-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: floatTitle 4s infinite ease-in-out;
+    filter: drop-shadow(0 0 15px rgba(251, 191, 36, 0.2));
+}
+
+@keyframes floatTitle {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 /* Philosophy Cards Grid */
