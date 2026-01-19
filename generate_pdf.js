@@ -131,6 +131,22 @@ const fs = require('fs');
                     line-height: 1.7 !important; 
                     font-size: 1.2rem !important;
                 }
+                .card-logo-icon { 
+                    width: 180px !important; 
+                    height: 180px !important; 
+                    background: rgba(255, 255, 255, 0.95) !important; 
+                    padding: 20px !important; 
+                    border-radius: 30px !important; 
+                    margin-bottom: 25px !important; 
+                    display: block !important; 
+                    object-fit: contain !important; 
+                }
+                /* Logo lebih besar untuk card Salib Emas, Alkitab Terbuka, Burung Merpati di PDF */
+                .philosophy-card:not(.large-card) .card-logo-icon {
+                    width: 220px !important;
+                    height: 220px !important;
+                    padding: 25px !important;
+                }
 
                 /* List Item */
                 .phil-list, .phil-list-simple {

@@ -334,6 +334,13 @@ header {
     cursor: pointer;
 }
 
+/* Logo lebih besar untuk card Salib Emas, Alkitab Terbuka, Burung Merpati */
+.philosophy-card:not(.large-card) .card-logo-icon {
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+}
+
 .card-logo-icon:hover {
     transform: scale(1.1) rotate(5deg);
     background: rgba(255, 255, 255, 0.1);
@@ -682,6 +689,13 @@ header {
         width: 80px;
         height: 80px;
         margin-bottom: 1.5rem;
+    }
+
+    /* Logo lebih besar untuk card Salib Emas, Alkitab Terbuka, Burung Merpati di mobile */
+    .philosophy-card:not(.large-card) .card-logo-icon {
+        width: 140px;
+        height: 140px;
+        padding: 15px;
     }
 
     .philosophy-card h3 {
