@@ -293,7 +293,7 @@ header {
     color: #cbd5e1;
 }
 
-/* Large Horizontal Card */
+/* Large Horizontal Card (Desktop Only) */
 .large-card {
     grid-column: 1 / -1;
     display: flex;
@@ -363,8 +363,8 @@ footer {
     .header-title {
         position: static;
         transform: none;
-        font-size: 0.85rem;
-        letter-spacing: 2px;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
         text-align: center;
         flex: 1;
         margin: 0 10px;
@@ -382,41 +382,67 @@ footer {
     }
 
     .hero-logo-large {
-        width: 260px;
-        height: 260px;
+        width: 200px;
+        height: 200px;
         margin-bottom: 2rem;
     }
 
     .section-head h2 {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
     }
 
     .philosophy-grid {
+        grid-template-columns: 1fr 1fr;
+        /* Buat sebaris (2 kolom) */
+        gap: 1rem;
+    }
+
+    .philosophy-grid>.philosophy-card:first-child {
+        grid-column: 1 / -1;
+        /* Salib tetap full width */
+    }
+
+    /* Khusus untuk grid Api Biru yang hanya 1 item */
+    .philosophy-grid:has(.philosophy-card:only-child) {
         grid-template-columns: 1fr;
-        gap: 2rem;
     }
 
     .philosophy-card {
-        padding: 3rem 1.5rem;
+        padding: 2rem 1rem;
+        border-radius: 24px;
+    }
+
+    .card-logo-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1.2rem;
+        border-radius: 20px;
+    }
+
+    .philosophy-card h3 {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+        letter-spacing: 0;
+    }
+
+    .philosophy-card p {
+        font-size: 0.8rem;
+        line-height: 1.5;
     }
 
     .info-section {
-        padding: 4rem 1.5rem;
+        padding: 3rem 1.5rem;
         margin-top: 3rem;
     }
 
     .info-content h2 {
-        font-size: 2.2rem !important;
+        font-size: 1.8rem !important;
     }
 
     .info-details-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .large-card .card-logo-icon {
-        width: 160px !important;
-        height: 160px !important;
+        gap: 1.2rem;
     }
 }
 
