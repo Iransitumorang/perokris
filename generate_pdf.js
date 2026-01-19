@@ -16,14 +16,44 @@ const path = require('path');
 
         await page.setViewport({ width: 1440, height: 900 });
 
-        // CSS khusus untuk PDF: sembunyikan video & tombol download
+        // CSS khusus untuk PDF: perbaikan visibilitas dan spacing
         await page.addStyleTag({
             content: `
                 video, .download-btn { display: none !important; } 
-                header { position: static !important; background: #020617 !important; } 
+                header { 
+                    position: relative !important; 
+                    top: 0 !important; 
+                    left: 0 !important; 
+                    transform: none !important; 
+                    width: 100% !important; 
+                    background: #020617 !important; 
+                    margin-bottom: 50px !important;
+                    display: flex !important;
+                    justify-content: center !important;
+                    align-items: center !important;
+                    padding: 60px !important;
+                } 
+                .header-logo {
+                    height: 60px !important;
+                    margin-right: 20px !important;
+                }
+                .header-title {
+                    position: relative !important;
+                    left: 0 !important;
+                    transform: none !important;
+                    color: #fbbf24 !important;
+                    font-size: 2rem !important;
+                    -webkit-text-fill-color: #fbbf24 !important;
+                }
                 body { background: #020617 !important; }
-                .hero { min-height: auto !important; padding: 50px 2rem !important; }
-                .philosophy-card { break-inside: avoid; }
+                .hero { 
+                    min-height: auto !important; 
+                    padding-top: 50px !important; 
+                }
+                .philosophy-grid { grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
+                .philosophy-card { break-inside: avoid; margin-bottom: 20px !important; padding: 20px !important; }
+                .large-card { flex-direction: column !important; text-align: center !important; }
+                .container { padding-top: 20px !important; }
             `
         });
 
